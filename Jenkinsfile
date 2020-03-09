@@ -18,8 +18,9 @@ pipeline {
 			}
 		}
 		stage('Test') {
-			sh 'mvn -f EDAF clean test'
+			steps {
+				sh 'mvn -f EDAF clean test'
+			}
 		}
-		
 	}
 }
