@@ -7,6 +7,7 @@ pipeline {
 					image 'selenium/hub'
 					args '-d -p 4444:4444 --name selenium-hub'
 				}
+				steps {}
 			}
 		}
 		stage('SeleniumNode') {
@@ -15,6 +16,7 @@ pipeline {
 					image 'selenium/node-chrome'
 					args '-d --link selenium-hub:hub'
 				}
+				steps {}
 			}
 		}
 		stage('Test') {
