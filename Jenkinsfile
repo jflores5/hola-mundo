@@ -7,7 +7,6 @@ pipeline {
 					image 'selenium/hub'
 					args '-d -p 4444:4444 --name selenium-hub'
 				}
-				steps {}
 			}
 		}
 		stage('SeleniumNode') {
@@ -16,13 +15,10 @@ pipeline {
 					image 'selenium/node-chrome'
 					args '-d --link selenium-hub:hub'
 				}
-				steps {}
 			}
 		}
-		stage('Test') {
-			steps {
-				sh 'mvn -f EDAF clean test'
-			}
+		steps {
+			sh 'mvn -f EDAF clean test'
 		}
 	}
 }
