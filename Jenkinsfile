@@ -2,7 +2,7 @@ pipeline {
 	agent none 
 	stages {
 		stage('SeleniumHub') {
-			agent {
+			agent docker {
 				docker {
 					image 'selenium/hub'
 					args '-d -p 4444:4444 --name selenium-hub'
@@ -11,7 +11,7 @@ pipeline {
 			}
 		}
 		stage('SeleniumNode') {
-			agent {
+			agent docker {
 				docker {
 					image 'selenium/node-chrome'
 					args '-d --link selenium-hub:hub'
