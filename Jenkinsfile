@@ -3,7 +3,8 @@ pipeline {
 	stages {
 		stage('test') {
 			steps {
-				sh 'docker-compose -p docker up -d'
+				sh 'docker run -d -p 4444:4444 --name selenium-hub selenium/hub'
+				sh 'docker run -d --link selenium-hub:hub selenium/node-chrome'
 				sh 'mvn -f EDAF clean test'
 			}
 		}
